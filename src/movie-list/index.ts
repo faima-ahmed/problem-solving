@@ -35,14 +35,15 @@ const movieCategories: MovieCategory[] = [
     averageRating: 0, // To calculate
   },
 ];
-const movies: Movie[] = [
+
+const movieList: Movie[] = [
   {
     id: 1,
     title: "Die Hard",
     description:
       "A New York City police officer tries to save his wife and several others taken hostage by terrorists.",
     releaseDate: "1988-07-20",
-    rating: 8.2,
+    rating: 8,
     genre: "Action",
     duration: 132,
     director: "John McTiernan",
@@ -59,7 +60,7 @@ const movies: Movie[] = [
     description:
       "In a post-apocalyptic wasteland, Max teams up with Furiosa to escape a tyrant.",
     releaseDate: "2015-05-15",
-    rating: 8.1,
+    rating: 6,
     genre: "Action",
     duration: 120,
     director: "George Miller",
@@ -76,7 +77,7 @@ const movies: Movie[] = [
     description:
       "Two high school friends try to enjoy one last party before graduation.",
     releaseDate: "2007-08-17",
-    rating: 7.6,
+    rating: 6.6,
     genre: "Comedy",
     duration: 113,
     director: "Greg Mottola",
@@ -158,13 +159,34 @@ const movies: Movie[] = [
  * TODO: Create a function to calculate the average rating of each movie category.
  */
 
-function calculateAverageRating(
+function calculateAverageRatingPerCategory(
   movieCategories: MovieCategory[],
   movies: Movie[]
-) {}
+) {
+  for (let i = 0; i < movieCategories.length; i++) {
+    const category = movieCategories[i];
 
-/**
- * TODO: Create a function to find out all the movies above duration "X". For example, "X" can be 120 minutes.
- */
+    const movieIds = category.movieIds;
+    let totalMovieRatings = 0;
+    movieIds.forEach((id) => {
+      const foundMovie = movies.find((movie) => movie.id == id);
+      totalMovieRatings += foundMovie?.rating || 0;
+    });
+    const averageRating = totalMovieRatings / movieIds.length;
+    category.averageRating = averageRating;
+  }
+}
+calculateAverageRatingPerCategory(movieCategories, movieList);
 
-function findMoviesAboveDuration(categoryName: string, duration: number) {}
+console.log(movieCategories);
+
+// Accepted ✅
+// function findMoviesAboveDuration(duration: number, movies: Movie[]) {
+//   const result = movies.filter((movie) => {
+//     return movie.duration > duration;
+//   });
+//   return result;
+// }
+// console.log(findMoviesAboveDuration(120, movieList));
+// console.log(findMoviesAboveDuration(140, movieList));
+// console.log(findMoviesAboveDuration(150, movieList));

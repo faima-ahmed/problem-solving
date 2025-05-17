@@ -16,4 +16,5 @@ export type MovieCategory = {
   title: string;
   description: string;
   averageRating: number;
+  totalDuration?: number;
 };

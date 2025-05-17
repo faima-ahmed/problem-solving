@@ -10,6 +10,7 @@ const movieCategories: MovieCategory[] = [
     description:
       "A collection of action-packed movies that will keep you on the edge of your seat.",
     averageRating: 0, // To calculate
+    totalDuration: undefined, // To calculate
   },
   {
     name: "Comedy",
@@ -36,6 +37,7 @@ const movieCategories: MovieCategory[] = [
     averageRating: 0, // To calculate
   },
 ];
+
 const movies: Movie[] = [
   {
     id: 1,
@@ -168,4 +170,9 @@ function calculateAverageRating(
  * TODO: Create a function to find out all the movies above duration "X". For example, "X" can be 120 minutes.
  */
 
-function findMoviesAboveDuration(categoryName: string, duration: number) {}
+function findMoviesAboveDuration(duration: number, movies: Movie[]) {}
+
+
+/**
+ * TODO: Find total duration per movie-category. 
+ */
