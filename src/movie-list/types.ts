@@ -7,7 +7,8 @@ export type Movie = {
   genre: string;
   duration: number;
   director: string;
-  cast: string[];
+  actorIds: number[];
+  topRatedActorId?: number;
 };
 
 export type MovieCategory = {
@@ -17,4 +18,14 @@ export type MovieCategory = {
   description: string;
   averageRating: number;
   totalDuration?: number;
+  topRatedActorId?: number;
+};
+
+export type Actor = {
+  id: number;
+  name: string;
+  rating: number;
+  bio?: string;
+  age?: number;
+  photos?: string[];
 };
