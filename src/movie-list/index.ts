@@ -26,6 +26,7 @@ function calculateAverageRatingPerCategory(
 }
 // calculateAverageRatingPerCategory(movieCategories, movieList);
 
+// console.log(movieCategories);
 
 // Accepted ✅
 function findMoviesAboveDuration(duration: number, movies: Movie[]) {
@@ -37,3 +38,26 @@ function findMoviesAboveDuration(duration: number, movies: Movie[]) {
 // console.log(findMoviesAboveDuration(120, movieList));
 // console.log(findMoviesAboveDuration(140, movieList));
 // console.log(findMoviesAboveDuration(150, movieList));
+
+function calculateTotalDurationForCategories(
+  movieCategories: MovieCategory[],
+  movies: Movie[]
+) {
+  for (let i = 0; i < movieCategories.length; i++) {
+    const category = movieCategories[i];
+
+    const movieIds = category.movieIds;
+    let currentCategoryTotalDuration = 0;
+
+    movieIds.forEach((id) => {
+      const searchMovie = movies.find((movie) => movie.id == id);
+      currentCategoryTotalDuration += searchMovie?.duration || 0;
+    });
+    const totalDuration = currentCategoryTotalDuration;
+    category.totalDuration = totalDuration;
+  }
+}
+
+
+// calculateTotalDurationForCategories(movieCategories, movieList);
+// console.log(movieCategories);
