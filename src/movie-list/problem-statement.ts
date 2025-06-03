@@ -25,7 +25,9 @@ function findMoviesAboveDuration(duration: number, movies: Movie[]) {}
  * TODO: 4. Find top-rated actors in each movie and store it inside topRatedActorId on each movie.
  * DIFFICULTY: 3/5
  */
-function findTopRatedActors(movies: Movie[], actors: Actor[]) {}
+function findTopRatedActors(movies: Movie[], actors: Actor[]) {
+  
+}
 
 /**
  * TODO: 5. Find the most popular movie (most rated) in each category.

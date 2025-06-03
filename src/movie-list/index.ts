@@ -1,5 +1,5 @@
 // TODO: Write your solutions here.
-import { Movie, MovieCategory } from "./types";
+import { Movie, MovieCategory, Actor } from "./types";
 
 import { movieCategories, movieList, actors } from "./data";
 
@@ -39,6 +39,7 @@ function findMoviesAboveDuration(duration: number, movies: Movie[]) {
 // console.log(findMoviesAboveDuration(140, movieList));
 // console.log(findMoviesAboveDuration(150, movieList));
 
+//problem-3
 function calculateTotalDurationForCategories(
   movieCategories: MovieCategory[],
   movies: Movie[]
@@ -58,6 +59,23 @@ function calculateTotalDurationForCategories(
   }
 }
 
+//problem-4
+function findTopRatedActors(movies: Movie[], actors: Actor[]) {
+  return movies.map((movie) => {
+    const movieActors = movie.actorIds
+      .map((actorId) => actors.find((actor) => actor.id === actorId))
+      .filter((actor) => actor !== undefined);
 
-// calculateTotalDurationForCategories(movieCategories, movieList);
-// console.log(movieCategories);
+    const topRatedActor = movieActors.reduce((prev, current) =>
+      prev.rating > current.rating ? prev : current
+    );
+
+    return {
+      ...movie,
+      topRatedActorId: topRatedActor.id,
+    };
+  });
+}
+
+const updatedMovieList = findTopRatedActors(movieList, actors);
+console.log(updatedMovieList);
